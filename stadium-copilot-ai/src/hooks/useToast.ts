@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 const TOAST_LIMIT = 5;
-const TOAST_REMOVE_DELAY = 4000;
 
 type ToastVariant = 'default' | 'success' | 'destructive' | 'warning' | 'ai';
 
@@ -31,16 +30,6 @@ function genId() {
   return count.toString();
 }
 
-const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
-
-function addToRemoveQueue(toastId: string, dispatch: React.Dispatch<Action>) {
-  if (toastTimeouts.has(toastId)) return;
-  const timeout = setTimeout(() => {
-    toastTimeouts.delete(toastId);
-    dispatch({ type: 'REMOVE_TOAST', toastId });
-  }, TOAST_REMOVE_DELAY);
-  toastTimeouts.set(toastId, timeout);
-}
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {

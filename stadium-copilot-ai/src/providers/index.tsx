@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './ThemeProvider';
+import { Toaster } from '@/components/layout/Toaster';
 
 interface Props {
   children: ReactNode;
@@ -11,6 +12,7 @@ export function Providers({ children }: Props) {
   return (
     <ThemeProvider>
       {children}
+      <Toaster />
     </ThemeProvider>
   );
 }

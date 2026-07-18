@@ -1,7 +1,10 @@
+import type { NavItem } from '@/types';
+
 export const APP_NAME = 'Stadium Copilot AI';
 export const APP_TAGLINE = 'AI-powered operational intelligence for FIFA World Cup 2026';
 
 export type UserRole = 'fan' | 'volunteer' | 'organizer' | 'staff';
+
 
 export const USER_ROLES: Record<UserRole, { label: string; emoji: string; color: string }> = {
   fan: { label: 'Fan', emoji: '🎟️', color: 'blue' },
@@ -10,7 +13,7 @@ export const USER_ROLES: Record<UserRole, { label: string; emoji: string; color:
   staff: { label: 'Venue Staff', emoji: '🏟️', color: 'orange' },
 };
 
-export const NAV_ITEMS = {
+export const NAV_ITEMS: Record<UserRole, NavItem[]> = {
   fan: [
     { href: '/fan/dashboard', label: 'Dashboard', icon: 'LayoutDashboard' },
     { href: '/fan/assistant', label: 'AI Assistant', icon: 'Sparkles' },

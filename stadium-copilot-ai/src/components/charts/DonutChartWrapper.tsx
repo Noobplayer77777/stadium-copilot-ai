@@ -62,7 +62,7 @@ export function DonutChartWrapper({
               fontSize: 12,
               color: 'rgb(240, 244, 255)',
             }}
-            formatter={(value: number) => [`${value}%`, '']}
+            formatter={(value) => [`${value ?? 0}%`, '']}
           />
           {showLegend && (
             <Legend

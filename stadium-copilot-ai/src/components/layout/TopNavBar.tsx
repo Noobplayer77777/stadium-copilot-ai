@@ -1,16 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Menu, Bell, Settings, ChevronDown } from 'lucide-react';
+import { Menu, Bell, ChevronDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
-  DropdownMenuSeparator, DropdownMenuTrigger,
-} from '@/components/layout/DropdownMenu';
 import { useSidebarStore, useNotificationStore, useUserStore } from '@/store';
 import { getInitials } from '@/lib/utils';
 
