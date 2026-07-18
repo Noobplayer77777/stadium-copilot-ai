@@ -193,4 +193,48 @@ Do not place unrelated code together. If unsure where a file belongs, refer to t
 
 ---
 
-*Last updated: Phase 3.1 — Frontend Foundation*
+## AI Context Rules
+
+- Always inspect existing implementation before generating new code.
+- Extend existing components instead of replacing them.
+- Never create duplicate components.
+- Prefer editing existing files over creating new ones.
+- If implementation details are unclear, leave TODO comments instead of inventing architecture.
+- Preserve project structure and naming conventions.
+
+---
+
+## Git Workflow Rules
+
+- One task = one logical commit.
+- Never modify unrelated features together.
+- Never rename folders unless explicitly instructed.
+- Keep pull requests and commits focused.
+- Maintain a clean Git history.
+
+---
+
+## Performance Rules
+
+- Prefer React Server Components where appropriate.
+- Minimize Client Components.
+- Use dynamic imports for heavy components.
+- Avoid unnecessary re-renders.
+- Memoize expensive calculations.
+- Keep bundle size small.
+- Optimize image loading.
+- Follow Next.js best practices.
+
+---
+
+## Documentation Rules
+
+- Document exported components.
+- Document reusable hooks.
+- Keep README updated if project structure changes.
+- Keep architecture documentation synchronized.
+- Add comments only where necessary to explain complex logic.
+
+---
+
+*Last updated: Phase 3.2 — Reusable UI*

@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Menu, Bell, ChevronDown } from 'lucide-react';
+import { Menu, ChevronDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useSidebarStore, useNotificationStore, useUserStore } from '@/store';
+import { NotificationBell } from '@/components/shared/NotificationBell';
+import { RoleBadge } from '@/components/shared/RoleBadge';
+import { useSidebarStore, useUserStore } from '@/store';
 import { getInitials } from '@/lib/utils';
 
 interface TopNavBarProps {
@@ -16,7 +18,6 @@ interface TopNavBarProps {
 
 export function TopNavBar({ title, children }: TopNavBarProps) {
   const { toggleMobile } = useSidebarStore();
-  const { unreadCount } = useNotificationStore();
   const { user } = useUserStore();
   const { theme, setTheme } = useTheme();
 
@@ -54,14 +55,7 @@ export function TopNavBar({ title, children }: TopNavBarProps) {
         </Button>
 
         {/* Notifications */}
-        <Button variant="ghost" size="icon-sm" className="relative" aria-label={`${unreadCount} unread notifications`}>
-          <Bell className="h-4 w-4" />
-          {unreadCount > 0 && (
-            <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[rgb(var(--brand-secondary))] text-[10px] font-bold text-white">
-              {unreadCount > 9 ? '9+' : unreadCount}
-            </span>
-          )}
-        </Button>
+        <NotificationBell />
 
         {/* User Menu */}
         <button
@@ -74,9 +68,13 @@ export function TopNavBar({ title, children }: TopNavBarProps) {
               {user ? getInitials(user.name) : 'U'}
             </AvatarFallback>
           </Avatar>
-          <div className="hidden sm:block text-left">
+          <div className="hidden sm:flex sm:flex-col sm:items-start sm:gap-1">
             <p className="text-sm font-medium leading-none">{user?.name ?? 'Guest'}</p>
-            <p className="text-xs text-[rgb(var(--muted-foreground))] capitalize">{user?.role ?? 'User'}</p>
+            {user?.role ? (
+              <RoleBadge role={user.role} className="scale-90 origin-left" />
+            ) : (
+              <p className="text-xs text-[rgb(var(--muted-foreground))]">User</p>
+            )}
           </div>
           <ChevronDown className="h-3 w-3 text-[rgb(var(--muted-foreground))] hidden sm:block" />
         </button>
