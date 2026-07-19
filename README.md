@@ -44,7 +44,10 @@ AI Services
 
 ## Screenshots
 
-(Add screenshots)
+<img width="1918" height="978" alt="Screenshot 2026-07-19 223327" src="https://github.com/user-attachments/assets/68aa9370-49f8-4d79-b750-0f351f205797" />
+<img width="1918" height="920" alt="Screenshot 2026-07-19 223400" src="https://github.com/user-attachments/assets/d6343030-4ad3-41c3-95d0-f54d1d358ac1" />
+
+
 
 ## Live Demo
 
