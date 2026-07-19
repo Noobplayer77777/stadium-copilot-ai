@@ -14,7 +14,16 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="bg-black text-white selection:bg-cyan-500/30 font-sans min-h-screen overflow-x-hidden">
+    <div className="bg-black text-white selection:bg-cyan-500/30 font-sans min-h-screen overflow-x-hidden relative">
+      {/* Dynamic Stadium Background */}
+      <div 
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-screen"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=2000&auto=format&fit=crop')" }}
+      ></div>
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/80 via-black/60 to-[#050505] pointer-events-none"></div>
+      
+      {/* Content Wrapper */}
+      <div className="relative z-10">
       {/* TopAppBar */}
       <header className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/10 shadow-2xl flex items-center justify-between px-6 py-4 max-w-full">
         <div className="flex items-center gap-3">
@@ -217,6 +226,7 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

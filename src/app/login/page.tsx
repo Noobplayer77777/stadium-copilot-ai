@@ -2,24 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { api } from '@/lib/api';
-import { setToken } from '@/lib/auth';
-import { useAuth } from '@/providers/AuthProvider';
+import { loginWithEmail } from '@/lib/firebase/auth';
 import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 
-const ROLE_DASHBOARDS: Record<string, string> = {
-  fan: '/fan/dashboard',
-  volunteer: '/volunteer/dashboard',
-  organizer: '/organizer/dashboard',
-  staff: '/staff/dashboard',
-  admin: '/organizer/dashboard',
-};
-
 export default function LoginPage() {
-  const router = useRouter();
-  const { refreshUser } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -31,22 +18,12 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      // POST /auth/login → receive JWT
-      const tokenData = await api.auth.login(email, password);
-      setToken(tokenData.access_token);
-
-      // Fetch current user to determine role
-      const user = await api.auth.getMe();
-
-      // Trigger auth context refresh
-      await refreshUser();
-
-      // Redirect based on role
-      const destination = ROLE_DASHBOARDS[user.role] ?? '/fan/dashboard';
-      router.push(destination);
-    } catch {
+      // Firebase login (or mock fallback)
+      await loginWithEmail(email, password);
+      // AuthProvider listens to onAuthStateChanged and will route automatically
+    } catch (err: unknown) {
+      console.error(err);
       setError('Invalid email or password. Please try again.');
-    } finally {
       setIsLoading(false);
     }
   };
@@ -138,7 +115,7 @@ export default function LoginPage() {
           {/* Footer Link */}
           <div className="mt-8 text-center">
             <p className="text-sm text-white/50">
-              Unregistered node? <Link className="text-[#00ffff] hover:text-white transition-colors font-medium ml-1" href="/">Request access</Link>
+              Unregistered node? <Link className="text-[#00ffff] hover:text-white transition-colors font-medium ml-1" href="/register">Request access</Link>
             </p>
           </div>
           
