@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stadium Copilot | Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "display": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-glow-cyan {
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+        }
+        .neon-border-cyan {
+            border: 1px solid rgba(34, 211, 238, 0.5);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.2), transparent);
+            position: absolute;
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-black text-white antialiased">
+<!-- Navigation Drawer (Side Nav) - Desktop -->
+<aside class="fixed inset-y-0 left-0 z-[60] flex flex-col bg-black/95 border-r border-white/10 h-full w-80 hidden md:flex shadow-2xl">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-cyan-400">
+<img class="w-full h-full object-cover" data-alt="A professional security commander portrait in a futuristic military-style uniform. The lighting is dominated by sharp cyan and magenta highlights against a dark, tech-filled background. The image is hyper-realistic with high-contrast cinematic lighting and a digital interface overlay, reflecting a high-stakes stadium operations environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpe3LdEhcJvVfQJstYVEW5hju-_YjpB27sBqNc8_fks5BagzD32QOWovPR9eC33R_1LggYfis9C2tkStD3nDZQzQqIZ_bC_s2kG3PHP7AHZKdZpW31FQFc3_Ocyg_HuF3WXzvwXkhnUXWj2wXd-Zi_CHa5QJnXirGyUanRbLieJd41_unZYvqx_PoURUTkVYdTrEKXPDiZ7BZTFAfhUxrLQKYMOEguAMw0EtQaP1IAB_i5H8PwYH-ssCZnEZHnmUMciVacKJwrLUqc"/>
+</div>
+<div>
+<h3 class="text-white font-display font-bold text-lg uppercase tracking-tight">UNIT-01</h3>
+<p class="text-white/60 text-xs font-body">Sector 7 Admin</p>
+<span class="text-[10px] text-cyan-400 font-bold tracking-widest uppercase">ACTIVE SESSION</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4 overflow-y-auto">
+<a class="flex items-center gap-4 px-4 py-3 text-cyan-400 font-bold bg-white/5 border-l-4 border-cyan-400 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-body text-sm">System Health</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-cyan-500/5 hover:text-white transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">cloudy_snowing</span>
+<span class="font-body text-sm">Weather Radar</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-cyan-500/5 hover:text-white transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-sm">Gate Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-cyan-500/5 hover:text-white transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-body text-sm">Security Feeds</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-cyan-500/5 hover:text-white transition-all duration-300 ease-in-out mt-10" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body text-sm">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-6 py-4 w-full fixed top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-cyan-400">sensors</span>
+<h1 class="text-xl font-display font-black text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] uppercase tracking-tighter">STADIUM COPILOT</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:block text-right mr-2">
+<p class="text-[10px] text-white/40 uppercase tracking-widest font-bold">Local Time</p>
+<p class="text-xs font-mono text-cyan-400" id="clock">19:42:05 UTC</p>
+</div>
+<div class="w-8 h-8 rounded-full border border-white/20 overflow-hidden cursor-pointer active:scale-95 duration-100">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-tech digital identification avatar, showing an abstract biometric profile. The image features glowing blue circuit lines and data nodes overlaid on a dark silhouette. The style is ultra-modern, cyberpunk-inspired, with a clean and sophisticated tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARCZt66z8IkOi4nR7NaEQ3pVb2sygrwFVbLUtXU_khHuOLY9kqadKnODArDCZn6WseRiOS0Ca1I4HGfLBTOu98YRdnnguNJKtDa1zpAwFPkj7u5cwKSOwUtLckRSPOcFmwB-jCVnZ0J8yIlXlYbZshZLGI9pdCYOxy2984pOX2nI1Y4LKGBb2Ozmb3G2E6LkUCeSOmFF5NOwpfPqJm9sZd_0X9-3FFsHDn6ymDDhLUS3h0ZS0WcHEtR2bZniwg-ZKIisFAAH3F2Zr7"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-28 md:pl-80 px-4 min-h-screen">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- KPI Section (Top Section) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Total Attendees -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group">
+<div class="scanline"></div>
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-cyan-400 text-3xl">groups</span>
+<span class="text-[10px] bg-cyan-500/20 text-cyan-400 px-2 py-0.5 rounded font-bold uppercase">Live</span>
+</div>
+<h3 class="text-white/50 text-xs font-display uppercase tracking-widest mb-1">Total Attendees</h3>
+<p class="text-4xl font-display font-black text-white tracking-tighter">42.5k</p>
+<div class="mt-4 w-full bg-white/5 h-1 rounded-full overflow-hidden">
+<div class="bg-cyan-400 h-full w-[85%] shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+</div>
+</div>
+<!-- Active Incidents -->
+<div class="glass-panel p-6 rounded-xl border-red-500/20 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-red-500 text-3xl">warning</span>
+<span class="text-[10px] bg-red-500/20 text-red-500 px-2 py-0.5 rounded font-bold uppercase">Priority</span>
+</div>
+<h3 class="text-white/50 text-xs font-display uppercase tracking-widest mb-1">Active Incidents</h3>
+<p class="text-4xl font-display font-black text-white tracking-tighter">12</p>
+<p class="mt-4 text-[10px] text-red-400/80 uppercase font-bold">+2 since last sync</p>
+</div>
+<!-- Staff Deployed -->
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-purple-400 text-3xl">badge</span>
+<span class="text-[10px] bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded font-bold uppercase">Deployment</span>
+</div>
+<h3 class="text-white/50 text-xs font-display uppercase tracking-widest mb-1">Staff Deployed</h3>
+<p class="text-4xl font-display font-black text-white tracking-tighter">148</p>
+<div class="flex gap-1 mt-4">
+<div class="h-1 flex-1 bg-purple-400"></div>
+<div class="h-1 flex-1 bg-purple-400"></div>
+<div class="h-1 flex-1 bg-purple-400/30"></div>
+<div class="h-1 flex-1 bg-purple-400/30"></div>
+</div>
+</div>
+</section>
+<!-- Interactive Stadium Map (Mid Section) -->
+<section class="glass-panel rounded-xl overflow-hidden relative min-h-[400px] flex flex-col">
+<div class="absolute top-4 left-4 z-10 space-y-2">
+<div class="bg-black/60 backdrop-blur-md p-3 border border-white/10 rounded-lg">
+<h4 class="text-cyan-400 font-display font-bold text-xs uppercase tracking-widest mb-2">Live Heatmap</h4>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+<span class="text-[10px] text-white/80">Gate 4: Critical Congestion</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span>
+<span class="text-[10px] text-white/80">Section 112: Medical Alert</span>
+</div>
+</div>
+</div>
+<!-- Map Background Container -->
+<div class="flex-1 relative bg-neutral-900 overflow-hidden">
+<!-- This div simulates the stadium map with heat zones -->
+<div class="absolute inset-0 opacity-40 mix-blend-overlay">
+
+</div>
+<div class="w-full h-full bg-cover bg-center" data-alt="A top-down architectural diagram of a modern sports stadium at night, styled like a futuristic tactical HUD. The map features glowing cyan outlines of seating sections and concourses. Vibrant red and orange neon heat blobs are concentrated at specific entry points and seating zones to indicate high-density areas. The overall aesthetic is dark, high-contrast, and data-driven." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCfBaoL898ATarXazehMwIdYSEQMgyawRqvfXJSft8TCj3twBgQwtqk92X-Apzd4SnSnNUdjPvojkeYPc-38gd7b0XKFLECX7R6bcvE1LDTw1YHQtnXyZpe25qDi9Lr69usSzdHM_rMDTewYqC7oD7D8C5yKxICt3YJAqn_3OCR_zA3q6qyStXjCnw7Pw71GGQpZH5nbr4-DXqIekMPpaWQ2YX-1tFj3PvAcjfxfOwEyLJ8fQ9ovAJ6EO45FqOBfcHhYJ4AfvGo5SOm')">
+</div>
+<!-- Pulsing Points of Interest -->
+<div class="absolute top-[45%] left-[20%] w-12 h-12 bg-red-500/40 rounded-full animate-ping border-2 border-red-500"></div>
+<div class="absolute top-[45%] left-[20%] w-4 h-4 bg-red-500 rounded-full border border-white shadow-[0_0_15px_rgba(239,68,68,1)]"></div>
+<div class="absolute bottom-[30%] right-[35%] w-8 h-8 bg-orange-500/40 rounded-full animate-pulse border-2 border-orange-500"></div>
+<div class="absolute bottom-[30%] right-[35%] w-4 h-4 bg-orange-500 rounded-full border border-white shadow-[0_0_15px_rgba(249,115,22,1)]"></div>
+</div>
+<div class="p-4 bg-black/40 border-t border-white/10 flex justify-between items-center">
+<span class="text-[10px] font-mono text-white/40 uppercase">Map Zoom: 1:400 | Layer: Thermal_Overlay_v4</span>
+<button class="bg-cyan-500/10 text-cyan-400 text-[10px] px-3 py-1 rounded border border-cyan-500/20 hover:bg-cyan-500/20 transition-all font-bold uppercase">Recalibrate Sensors</button>
+</div>
+</section>
+<!-- Active Alerts (Bottom Section) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-display font-bold uppercase tracking-widest text-white/80 flex items-center gap-2">
+<span class="material-symbols-outlined text-cyan-400">rss_feed</span>
+                        Active Alerts
+                    </h2>
+<button class="text-xs text-white/40 hover:text-white uppercase tracking-tighter">View Archive</button>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<!-- Alert 1: High Priority -->
+<div class="glass-panel p-4 rounded-xl border-l-4 border-red-500 flex items-center gap-4 group hover:bg-red-500/5 transition-all shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+<div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-500 shrink-0">
+<span class="material-symbols-outlined text-3xl">door_front</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-white font-bold text-sm">Gate 4 Bottleneck</h4>
+<span class="text-[10px] font-mono text-red-500 font-bold">URGENT</span>
+</div>
+<p class="text-white/60 text-xs mt-1">Ingress exceeds capacity by 42%. Dispatching auxiliary stewards now.</p>
+</div>
+<span class="material-symbols-outlined text-white/20 group-hover:text-white transition-colors cursor-pointer">chevron_right</span>
+</div>
+<!-- Alert 2: Medium Priority -->
+<div class="glass-panel p-4 rounded-xl border-l-4 border-orange-500 flex items-center gap-4 group hover:bg-orange-500/5 transition-all shadow-[0_0_20px_rgba(249,115,22,0.1)]">
+<div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500 shrink-0">
+<span class="material-symbols-outlined text-3xl">medical_services</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-white font-bold text-sm">Medical incident in Section 112</h4>
+<span class="text-[10px] font-mono text-orange-500 font-bold">STABILIZING</span>
+</div>
+<p class="text-white/60 text-xs mt-1">First responder Unit-7 on site. Reporting heat exhaustion. EMS standby.</p>
+</div>
+<span class="material-symbols-outlined text-white/20 group-hover:text-white transition-colors cursor-pointer">chevron_right</span>
+</div>
+<!-- Alert 3: Low Priority -->
+<div class="glass-panel p-4 rounded-xl border-l-4 border-cyan-400 flex items-center gap-4 group hover:bg-cyan-400/5 transition-all">
+<div class="w-12 h-12 rounded-lg bg-cyan-400/20 flex items-center justify-center text-cyan-400 shrink-0">
+<span class="material-symbols-outlined text-3xl">groups_3</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h4 class="text-white font-bold text-sm">Staffing short at Concourse B</h4>
+<span class="text-[10px] font-mono text-cyan-400 font-bold">INFO</span>
+</div>
+<p class="text-white/60 text-xs mt-1">Check-point 4 reporting -2 staff. Requesting reassignment from Concourse A.</p>
+</div>
+<span class="material-symbols-outlined text-white/20 group-hover:text-white transition-colors cursor-pointer">chevron_right</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-black/90 backdrop-blur-xl border-t border-cyan-500/20 shadow-[0_-10px_30px_rgba(0,0,0,0.8)] md:hidden rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-cyan-400 bg-cyan-500/10 rounded-xl p-2 shadow-[inset_0_0_10px_rgba(34,211,238,0.2)] active:translate-y-1 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Operations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/40 p-2 hover:text-purple-400 active:translate-y-1 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Incidents</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/40 p-2 hover:text-purple-400 active:translate-y-1 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Crowd</span>
+</a>
+<a class="flex flex-col items-center justify-center text-white/40 p-2 hover:text-purple-400 active:translate-y-1 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined">hail</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Dispatch</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Update Clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-GB', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' UTC';
+            document.getElementById('clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Simple haptic feedback simulation
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', () => {
+                if (window.navigator.vibrate) window.navigator.vibrate(10);
+            });
+        });
+    </script>
+</body></html>

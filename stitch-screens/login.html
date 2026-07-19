@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stadium Copilot AI - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#00ffff',
+                            cyanGlow: 'rgba(0, 255, 255, 0.5)',
+                            purple: '#a855f7',
+                            bg: '#050505',
+                            surface: '#0f1115',
+                        }
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk", "sans-serif"],
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Space Grotesk", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z' fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(15, 17, 21, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+        .input-glow:focus {
+            box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2), 0 0 15px rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-white font-body min-h-screen flex flex-col relative overflow-hidden antialiased">
+<!-- Background Elements -->
+<div class="absolute inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+<!-- Main Content Canvas (No TopAppBar/Footer for Login) -->
+<main class="flex-grow flex items-center justify-center p-6 relative z-10">
+<div class="glass-card rounded-2xl w-full max-w-md p-8 sm:p-10 relative overflow-hidden">
+<!-- Decorative corner accent -->
+<div class="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-brand-cyan/30 rounded-tr-2xl"></div>
+<!-- Header / Logo -->
+<div class="flex flex-col items-center mb-8">
+<div class="w-16 h-16 mb-6">
+<img alt="Stadium Copilot Logo" class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeE69wdpmdbJ-QFSohk4HGtV4S2UCLNuGwEhN6PgoVdT32ikMaTpSZU0cEwj2SfN1LXQtCgx3U3ROQTBLsvJ3ktrEppyoE1TlB_5cpVIh9d4z8nG81Cuh22xx6fg22WmtrthIqBr5VLuv0dxiPgIblUW67p8_dAo4QuPUsV7OFZuxCQeSjvG0zwrwMb2Kd6nsAoT1S6dzwBSfL3ZqsgPo_ZA3iYAhZZmuDsQxkINN2cDg9pF05SDaLZehZpHJdx7kGw9VwKxp9U0jH"/>
+</div>
+<h1 class="font-display font-bold text-2xl tracking-tight text-white mb-2">Welcome Back</h1>
+<p class="text-white/50 text-sm font-label uppercase tracking-widest text-center">Secure Access Protocol</p>
+</div>
+<!-- Login Form -->
+<form class="space-y-6">
+<!-- Email -->
+<div class="space-y-2">
+<label class="font-label text-xs uppercase tracking-widest text-white/70 ml-1" for="email">Operator ID / Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/40">
+<span class="material-symbols-outlined text-lg">person</span>
+</div>
+<input class="w-full bg-black/40 border border-white/10 rounded-lg py-3 pl-10 pr-4 text-white placeholder-white/20 focus:outline-none input-glow transition-all duration-300 font-body text-sm" id="email" placeholder="Enter identification..." type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="font-label text-xs uppercase tracking-widest text-white/70" for="password">Security Key</label>
+<a class="text-brand-cyan text-xs font-medium hover:text-white transition-colors duration-200" href="#">Forgot key?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/40">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<input class="w-full bg-black/40 border border-white/10 rounded-lg py-3 pl-10 pr-4 text-white placeholder-white/20 focus:outline-none input-glow transition-all duration-300 font-body text-sm" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Action -->
+<button class="w-full bg-brand-cyan text-black font-headline font-bold py-3.5 px-4 rounded-lg flex justify-center items-center gap-2 btn-glow mt-8" type="button">
+<span>Initialize Session</span>
+<span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 text-center">
+<p class="text-sm text-white/50 font-body">
+                    Unregistered node? <a class="text-brand-cyan hover:text-white transition-colors font-medium ml-1" href="#">Request access</a>
+</p>
+</div>
+<!-- Decorative structural lines -->
+<div class="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-brand-cyan/20 to-transparent"></div>
+</div>
+</main>
+<!-- Decorative Corner UI Elements mimicking a HUD -->
+<div class="fixed top-4 left-4 flex gap-1 pointer-events-none opacity-30 z-0">
+<div class="w-2 h-2 bg-brand-cyan"></div>
+<div class="w-2 h-2 border border-brand-cyan"></div>
+</div>
+<div class="fixed bottom-4 right-4 text-[10px] font-mono text-brand-cyan/30 tracking-widest pointer-events-none z-0">
+        SYS.VER.2.4.1_BETA
+    </div>
+</body></html>
