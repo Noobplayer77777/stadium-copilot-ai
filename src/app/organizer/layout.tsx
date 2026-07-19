@@ -19,7 +19,7 @@ export default function OrganizerLayout({ children }: { children: React.ReactNod
   }, []);
 
   return (
-    <ProtectedRoute allowedRoles={['organizer']}>
+    <ProtectedRoute allowedRoles={['organizer','admin']}>
       <div className="bg-black text-white antialiased min-h-screen">
         {/* Navigation Drawer (Side Nav) - Desktop */}
         <aside className="fixed inset-y-0 left-0 z-[60] flex-col bg-black/95 border-r border-white/10 h-full w-80 hidden md:flex shadow-2xl">
@@ -39,26 +39,11 @@ export default function OrganizerLayout({ children }: { children: React.ReactNod
           </div>
           
           <nav className="flex-1 px-4 space-y-2 mt-4 overflow-y-auto">
-            <Link href="/organizer/dashboard" className="flex items-center gap-4 px-4 py-3 text-[#00f5ff] font-bold bg-white/5 border-l-4 border-[#00f5ff] transition-all duration-300 ease-in-out">
-              <span className="material-symbols-outlined">memory</span>
-              <span className="font-sans text-sm">System Health</span>
-            </Link>
-            <Link href="/organizer/weather" className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out">
-              <span className="material-symbols-outlined">cloudy_snowing</span>
-              <span className="font-sans text-sm">Weather Radar</span>
-            </Link>
-            <Link href="/organizer/analytics" className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out">
-              <span className="material-symbols-outlined">analytics</span>
-              <span className="font-sans text-sm">Gate Analytics</span>
-            </Link>
-            <Link href="/organizer/security" className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out">
-              <span className="material-symbols-outlined">videocam</span>
-              <span className="font-sans text-sm">Security Feeds</span>
-            </Link>
-            <Link href="/organizer/settings" className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out mt-10">
-              <span className="material-symbols-outlined">settings</span>
-              <span className="font-sans text-sm">Settings</span>
-            </Link>
+            <Link href="/organizer/dashboard"><a className="flex items-center gap-4 px-4 py-3 text-[#00f5ff] font-bold bg-white/5 border-l-4 border-[#00f5ff] transition-all duration-300 ease-in-out cursor-pointer"><span className="material-symbols-outlined">memory</span><span className="font-sans text-sm">System Health</span></a></Link>
+            <Link href="/organizer/weather"><a className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out cursor-pointer"><span className="material-symbols-outlined">cloudy_snowing</span><span className="font-sans text-sm">Weather Radar</span></a></Link>
+            <Link href="/organizer/analytics"><a className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out cursor-pointer"><span className="material-symbols-outlined">analytics</span><span className="font-sans text-sm">Gate Analytics</span></a></Link>
+            <Link href="/organizer/security"><a className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out cursor-pointer"><span className="material-symbols-outlined">videocam</span><span className="font-sans text-sm">Security Feeds</span></a></Link>
+            <Link href="/organizer/settings"><a className="flex items-center gap-4 px-4 py-3 text-white/60 hover:bg-[#00f5ff]/5 hover:text-white transition-all duration-300 ease-in-out mt-10 cursor-pointer"><span className="material-symbols-outlined">settings</span><span className="font-sans text-sm">Settings</span></a></Link>
           </nav>
         </aside>
 
@@ -80,6 +65,9 @@ export default function OrganizerLayout({ children }: { children: React.ReactNod
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuARCZt66z8IkOi4nR7NaEQ3pVb2sygrwFVbLUtXU_khHuOLY9kqadKnODArDCZn6WseRiOS0Ca1I4HGfLBTOu98YRdnnguNJKtDa1zpAwFPkj7u5cwKSOwUtLckRSPOcFmwB-jCVnZ0J8yIlXlYbZshZLGI9pdCYOxy2984pOX2nI1Y4LKGBb2Ozmb3G2E6LkUCeSOmFF5NOwpfPqJm9sZd_0X9-3FFsHDn6ymDDhLUS3h0ZS0WcHEtR2bZniwg-ZKIisFAAH3F2Zr7" 
               />
             </div>
+            <Link href="/logout" className="text-xs text-white/60 hover:text-white transition-colors">
+              Logout
+            </Link>
           </div>
         </header>
 

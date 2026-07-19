@@ -17,12 +17,11 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
     if (!isLoading) {
       if (!user) {
         router.replace('/login');
-      } else if (allowedRoles && !allowedRoles.includes(user.role)) {
-        // Redirect to their own role's dashboard
+      } else if (allowedRoles && !allowedRoles.includes(user.role) && user.role !== 'admin') {
         router.replace(`/${user.role}/dashboard`);
       }
     }
-  }, [user, isLoading, router, allowedRoles]);
+  }, [user, isLoading, allowedRoles, router]);
 
   if (isLoading) {
     return (
@@ -34,7 +33,7 @@ export function ProtectedRoute({ children, allowedRoles }: ProtectedRouteProps) 
 
   if (!user) return null;
 
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
+  if (allowedRoles && !allowedRoles.includes(user.role) && user.role !== 'admin') {
     return null;
   }
 
