@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './ThemeProvider';
+import { AuthProvider } from './AuthProvider';
 import { Toaster } from '@/components/layout/Toaster';
 
 interface Props {
@@ -10,9 +11,11 @@ interface Props {
 
 export function Providers({ children }: Props) {
   return (
-    <ThemeProvider>
-      {children}
-      <Toaster />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        {children}
+        <Toaster />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }

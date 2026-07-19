@@ -4,6 +4,8 @@ from app.core.config import settings
 from app.core.logging import setup_logging
 import logging
 
+from app.api.routers.api_router import api_router
+
 # Setup structured logging
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -31,8 +33,7 @@ async def health_check():
     return {"status": "ok", "project": settings.PROJECT_NAME}
 
 
-# TODO: Include routers here once implemented
-# app.include_router(api_router, prefix=settings.API_V1_STR)
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
 @app.on_event("startup")

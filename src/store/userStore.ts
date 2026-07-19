@@ -1,35 +1,22 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { User, UserRole } from '@/types';
 
-interface UserState {
-  user: User | null;
-  isAuthenticated: boolean;
+/**
+ * Lightweight store for UI preferences (language, etc.).
+ * Authentication state is managed by AuthProvider / React Context.
+ * User identity comes from /auth/me via the real FastAPI backend.
+ */
+interface UserPrefsState {
   language: string;
-  setUser: (user: User) => void;
-  clearUser: () => void;
   setLanguage: (code: string) => void;
-  setRole: (role: UserRole) => void;
 }
 
-export const useUserStore = create<UserState>()(
+export const useUserStore = create<UserPrefsState>()(
   persist(
-    (set, get) => ({
-      user: null,
-      isAuthenticated: false,
+    (set) => ({
       language: 'en',
-      setUser: (user) => set({ user, isAuthenticated: true }),
-      clearUser: () => set({ user: null, isAuthenticated: false }),
-      setLanguage: (language) => {
-        set({ language });
-        const user = get().user;
-        if (user) set({ user: { ...user, language } });
-      },
-      setRole: (role) => {
-        const user = get().user;
-        if (user) set({ user: { ...user, role } });
-      },
+      setLanguage: (language) => set({ language }),
     }),
-    { name: 'stadium-copilot-user' }
+    { name: 'stadium-copilot-prefs' }
   )
 );
