@@ -315,5 +315,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <div align="center">
-  Built for the <strong>FIFA World Cup 2026 Hackathon</strong> · Powered by <strong>Anthropic Claude</strong>
+  Built for the <strong>FIFA World Cup 2026 Hackathon</strong>
 </div>
