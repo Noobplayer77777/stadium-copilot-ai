@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { seedTestUsers } from '@/lib/firebase/seedTestUsers';
 import type { User } from '@/types';
 import { onAuthStateChanged, logout as firebaseLogout } from '@/lib/firebase/auth';
 import { getUserDocument } from '@/lib/firebase/db';
@@ -22,6 +23,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Seed mock users for development/testing when Firebase config is absent
+    seedTestUsers();
     const unsubscribe = onAuthStateChanged(async (firebaseUser) => {
       if (firebaseUser) {
         // Fetch custom user document from Firestore (or mock DB) to get their role
