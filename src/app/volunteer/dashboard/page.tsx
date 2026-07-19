@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useAuth } from '@/providers/AuthProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Clock, MapPin, CheckCircle2, Circle, 
@@ -14,8 +15,6 @@ import { SectionContainer } from '@/components/layout/SectionContainer';
 import { ResponsiveGrid } from '@/components/layout/ResponsiveGrid';
 import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useUserStore } from '@/store';
-
 // Mock Data
 const PROFILE = {
   id: 'VOL-2026-894',
@@ -66,7 +65,7 @@ const stagger = {
 };
 
 export default function VolunteerDashboard() {
-  const { user } = useUserStore();
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState<'tasks' | 'report'>('tasks');
   const [messages, setMessages] = useState(MESSAGES);
   const [chatInput, setChatInput] = useState('');

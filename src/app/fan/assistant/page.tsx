@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useAuth } from '@/providers/AuthProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Send, Bot, Trash2, Copy, RotateCcw,
@@ -14,7 +15,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { useUserStore } from '@/store';
 import { cn } from '@/lib/utils';
 
 // Mock Data & Responses
@@ -48,7 +48,7 @@ interface Message {
 }
 
 export default function AssistantPage() {
-  const { user } = useUserStore();
+  const { user } = useAuth();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',

@@ -18,5 +18,5 @@ class TaskUpdate(TaskBase):
 
 
 class TaskResponse(TaskBase):
-    id: int
+    id: uuid.UUID
     model_config = ConfigDict(from_attributes=True)

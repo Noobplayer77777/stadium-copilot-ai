@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useAuth } from '@/providers/AuthProvider';
 import { motion } from 'framer-motion';
 import { 
   Calendar, Clock, Ticket, MapPin, Navigation, 
@@ -14,8 +15,6 @@ import { ResponsiveGrid } from '@/components/layout/ResponsiveGrid';
 import { DashboardCard } from '@/components/layout/DashboardCard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { useUserStore } from '@/store';
-
 const fadeUp = {
   hidden: { opacity: 0, y: 15 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
@@ -27,7 +26,7 @@ const stagger = {
 };
 
 export default function FanDashboard() {
-  const { user } = useUserStore();
+  const { user } = useAuth();
 
   return (
     <div className="flex flex-col gap-8 pb-8">

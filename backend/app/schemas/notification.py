@@ -1,9 +1,10 @@
+import uuid
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 
 
 class NotificationBase(BaseModel):
-    id: int
+    id: uuid.UUID
     title: str
     body: str
     type: str
@@ -20,5 +21,5 @@ class NotificationUpdate(NotificationBase):
 
 
 class NotificationResponse(NotificationBase):
-    id: int
+    id: uuid.UUID
     model_config = ConfigDict(from_attributes=True)

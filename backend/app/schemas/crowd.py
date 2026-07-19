@@ -1,10 +1,11 @@
+import uuid
 from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 
 
 class CrowdStatusBase(BaseModel):
-    id: int
-    zone_id: int
+    id: uuid.UUID
+    zone_id: uuid.UUID
     density_level: str
     head_count: int
     timestamp: datetime
@@ -19,5 +20,5 @@ class CrowdStatusUpdate(CrowdStatusBase):
 
 
 class CrowdStatusResponse(CrowdStatusBase):
-    id: int
+    id: uuid.UUID
     model_config = ConfigDict(from_attributes=True)

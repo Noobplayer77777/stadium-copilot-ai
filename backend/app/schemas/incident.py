@@ -3,8 +3,8 @@ import uuid
 
 
 class IncidentBase(BaseModel):
-    id: int
-    zone_id: int
+    id: uuid.UUID
+    zone_id: uuid.UUID
     type: str
     severity: str
     status: str
@@ -21,5 +21,5 @@ class IncidentUpdate(IncidentBase):
 
 
 class IncidentResponse(IncidentBase):
-    id: int
+    id: uuid.UUID
     model_config = ConfigDict(from_attributes=True)

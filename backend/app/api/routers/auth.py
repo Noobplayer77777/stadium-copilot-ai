@@ -71,7 +71,8 @@ async def refresh_access_token(
         )
 
     # verify user exists and is active
-    result = await db.execute(select(User).where(User.id == token_data.sub))
+    import uuid
+    result = await db.execute(select(User).where(User.id == uuid.UUID(token_data.sub)))
     user = result.scalars().first()
     if not user or not user.is_active:
         raise HTTPException(status_code=404, detail="User not found or inactive")

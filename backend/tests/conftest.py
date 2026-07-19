@@ -8,10 +8,15 @@ from app.main import app
 from app.db.base import Base
 from app.api.deps import get_db
 from app.models.user import User, Role
+from app.models.stadium import Stadium, Zone
+from app.models.match import Match
+from app.models.operations import CrowdStatus, Incident, Notification
+from app.models.tasks import VolunteerTask, StaffTask
+
 from app.core.security import get_password_hash
 
 # ── In-memory SQLite test engine ─────────────────────────────────────────────
-TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
+TEST_DATABASE_URL = "sqlite+aiosqlite:///./test.db"
 
 test_engine = create_async_engine(
     TEST_DATABASE_URL,
@@ -54,7 +59,7 @@ async def db_session():
 
 
 @pytest_asyncio.fixture(scope="session", autouse=True)
-async def seed_data(db_session: AsyncSession):
+async def seed_data(db_session: AsyncSession, setup_database):
     """Seed a fan role + test user."""
     fan_role = Role(name="fan", description="Football fan")
     admin_role = Role(name="admin", description="Administrator")

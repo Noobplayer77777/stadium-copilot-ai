@@ -2,12 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useAuth } from '@/providers/AuthProvider';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { type UserRole } from '@/lib/constants';
-import { useUserStore } from '@/store';
-
 const rolesList: { id: UserRole; title: string; desc: string; icon: string }[] = [
   { id: 'fan', title: 'Fan', desc: 'Match attendees navigating the stadium', icon: '🎟️' },
   { id: 'volunteer', title: 'Volunteer', desc: 'On-ground staff handling tasks', icon: '🤝' },
@@ -29,7 +28,7 @@ const itemVariants = {
 };
 
 export default function RoleSelectPage() {
-  const { setRole } = useUserStore();
+  const { user } = useAuth(); // setRole not supported anymore
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[rgb(var(--surface-0))] p-4">
@@ -63,7 +62,7 @@ export default function RoleSelectPage() {
         >
           {rolesList.map((role) => (
             <motion.div key={role.id} variants={itemVariants}>
-              <Link href={`/${role.id}/dashboard`} onClick={() => setRole(role.id)}>
+              <Link href={`/${role.id}/dashboard`}>
                 <Card className="h-full border-[rgb(var(--border))] hover:border-[rgb(var(--primary))] hover:shadow-md transition-all cursor-pointer group">
                   <CardHeader className="flex flex-row items-center gap-4 pb-2">
                     <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[rgb(var(--secondary))] text-2xl group-hover:scale-110 transition-transform">

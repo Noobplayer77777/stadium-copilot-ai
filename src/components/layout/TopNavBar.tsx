@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useAuth } from '@/providers/AuthProvider';
 import { Menu, ChevronDown } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
@@ -18,7 +19,7 @@ interface TopNavBarProps {
 
 export function TopNavBar({ title, children }: TopNavBarProps) {
   const { toggleMobile } = useSidebarStore();
-  const { user } = useUserStore();
+  const { user } = useAuth();
   const { theme, setTheme } = useTheme();
 
   return (

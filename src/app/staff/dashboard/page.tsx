@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useAuth } from '@/providers/AuthProvider';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   User, Clock, MapPin, CheckCircle2, AlertTriangle, 
@@ -13,8 +14,6 @@ import { Button } from '@/components/ui/button';
 import { SectionContainer } from '@/components/layout/SectionContainer';
 import { ResponsiveGrid } from '@/components/layout/ResponsiveGrid';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useUserStore } from '@/store';
-
 // Mock Data
 const PROFILE = {
   id: 'STF-MAIN-102',
@@ -96,7 +95,7 @@ const stagger = {
 };
 
 export default function StaffDashboard() {
-  const { user } = useUserStore();
+  const { user } = useAuth();
   const [activeQueueTab, setActiveQueueTab] = useState<'work' | 'maint' | 'incident'>('work');
   const [incidentFilter, setIncidentFilter] = useState('All');
   const [selectedMapNode, setSelectedMapNode] = useState<string | null>('office');

@@ -1,9 +1,10 @@
+import uuid
 from pydantic import BaseModel, ConfigDict
 
 
 class ZoneBase(BaseModel):
-    id: int
-    stadium_id: int
+    id: uuid.UUID
+    stadium_id: uuid.UUID
     name: str
     type: str
     capacity: int | None
@@ -18,5 +19,5 @@ class ZoneUpdate(ZoneBase):
 
 
 class ZoneResponse(ZoneBase):
-    id: int
+    id: uuid.UUID
     model_config = ConfigDict(from_attributes=True)
