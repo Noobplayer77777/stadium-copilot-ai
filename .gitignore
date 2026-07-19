@@ -20,6 +20,26 @@
 # production
 /build
 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+
+# Databases
+*.db
+*.sqlite3
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+
 # misc
 .DS_Store
 *.pem
