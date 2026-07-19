@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { NotificationBell } from '@/components/shared/NotificationBell';
 import { RoleBadge } from '@/components/shared/RoleBadge';
-import { useSidebarStore, useUserStore } from '@/store';
+import { useSidebarStore } from '@/store';
 import { getInitials } from '@/lib/utils';
 
 interface TopNavBarProps {

@@ -3,9 +3,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  MapPin, Clock, Users, ShieldAlert, DoorOpen, Coffee, 
-  ShoppingBag, Droplets, Train, 
-  Accessibility, AlertTriangle, Navigation
+  MapPin, Clock, Users, DoorOpen, Coffee, 
+  Droplets, Accessibility, AlertTriangle, Navigation
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

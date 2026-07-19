@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { useAuth } from '@/providers/AuthProvider';
 import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,7 +27,7 @@ const itemVariants = {
 };
 
 export default function RoleSelectPage() {
-  const { user } = useAuth(); // setRole not supported anymore
+  // setRole not supported anymore
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[rgb(var(--surface-0))] p-4">
